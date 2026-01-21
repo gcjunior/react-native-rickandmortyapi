@@ -1,9 +1,12 @@
-import { useCallback, useEffect, useMemo } from 'react';
-import { Toast } from 'toastify-react-native'
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Toast } from 'toastify-react-native';
 import { debounce } from 'lodash'; // Import as a named export
 
-const useFetchRestApi = ({ searchText, currentPage, setTotalItems, setTotalPages, 
-    setPersonagens  }) => {
+const useFetchRestApi = ({
+  searchText,
+  currentPage
+}) => {
+  const [fetchResults, setFetchResults] = useState(0);
   const fetchSearchResults = useCallback(
     async (searchTerm, selectedPage) => {
       let query = searchTerm ? `?name=${searchTerm}&` : '?';
@@ -12,26 +15,24 @@ const useFetchRestApi = ({ searchText, currentPage, setTotalItems, setTotalPages
         const response = await fetch(
           `https://rickandmortyapi.com/api/character/${query}`,
         );
-        if (!response.ok) { throw response }
+        if (!response.ok) {
+          throw response;
+        }
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const json = await response.json();
-        setTotalItems(json.info.count);
-        setTotalPages(json.info.pages);
-        setPersonagens(json.results);
+        setFetchResults(json);
       } catch (err) {
-        setTotalItems(0);
-        setTotalPages(0);
-        setPersonagens([]);
+        setFetchResults(null);
         if (err) {
-          err.json().then(({error: error}) => {
+          err.json().then(({ error: error }) => {
             Toast.error(error, 'bottom');
-          })
+          });
         }
       }
     },
-    [setPersonagens, setTotalItems, setTotalPages],
+    [setFetchResults],
   );
 
   const debouncedSearch = useMemo(
@@ -50,15 +51,16 @@ const useFetchRestApi = ({ searchText, currentPage, setTotalItems, setTotalPages
     };
   }, [debouncedSearch]);
 
-
   useEffect(() => {
     debouncedSearch(searchText, currentPage);
   }, [searchText, currentPage, debouncedSearch]);
 
+  console.log(fetchResults);
+
   return {
-    fetchSearchResults,
-    debouncedSearch,
-  }
+    totalItems: fetchResults?.info?.count ?? 0,
+    data: fetchResults?.results ?? [],
+  };
 };
 
 export default useFetchRestApi;

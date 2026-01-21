@@ -12,15 +12,6 @@ export const styles = StyleSheet.create({
     padding: '15px 10px',
     background: '#fff',
   },
-  h1: {
-    textAlign: 'center',
-  },
-  small: {
-    border: '2px solid #777',
-    borderRadius: '7px',
-    padding: '5px 12px',
-    color: '#777',
-  },
   pagination: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -32,18 +23,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 4,
-  },
-  paginationItem: {
-    borderColor: '#d42025',
-    marginHorizontal: 6,
-    color: '#fff',
-    width: 40,
-    height: 48,
-    borderRadius: 40,
-    borderWidth: 5,
-  },
-  paginationItemSpan: {
-    color: '#fff',
   },
   pageButton: {
     marginHorizontal: 2,
@@ -71,49 +50,12 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
-  prev: {
-    background: '#fff',
-    border: 'none',
-    padding: '10px',
-    color: 'blue',
-    boxShadow: '0 0 3px rgba(0, 0, 0, 0.4)',
-    margin: '0 10px',
-    cursor: 'pointer',
-  },
-  next: {
-    background: '#fff',
-    border: 'none',
-    padding: '10px',
-    color: 'blue',
-    boxShadow: '0 0 3px rgba(0, 0, 0, 0.4)',
-    margin: '0 10px',
-    cursor: 'pointer',
-  },
-  paginationItemActive: {
-    border: '1px solid #888',
-    color: '#888',
-    pointerEvents: 'none',
-  },
-  prevDisabled: {
-    pointerEvents: 'none',
-    boxShadow: 'none',
-    color: '#999',
-  },
-  nextDisabled: {
-    pointerEvents: 'none',
-    boxShadow: 'none',
-    color: '#999',
-  },
   navButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
     borderWidth: 0,
     borderColor: '#d42025',
-  },
-  navButtonText: {
-    fontSize: 18,
-    color: '#d42025',
   },
   disabledButton: {
     opacity: 0.5, // Visually indicate disabled state

@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
+    marginHorizontal: 10,
+    marginVertical: 15
   },
   buttonText: {
     color: 'white',

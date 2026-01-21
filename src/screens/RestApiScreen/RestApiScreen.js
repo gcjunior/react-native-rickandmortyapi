@@ -8,19 +8,13 @@ import Table from '../../components/Table/Table';
 import useFetchRestApi from '../../hooks/useFetchRestApi';
 
 const RestApiScreen = () => {
-  const [personagens, setPersonagens] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
   const contentPerPage = 20;
 
-  const { fetchSearchResults, debouncedSearch } = useFetchRestApi({
+  const { data, totalItems } = useFetchRestApi({
     searchText,
-    currentPage,
-    setTotalItems,
-    setTotalPages,
-    setPersonagens,
+    currentPage
   });
 
   const onChangeSearchPersonagens = (val) => {
@@ -42,26 +36,22 @@ const RestApiScreen = () => {
       <View style={styles.col}>
         <Text style={styles.nameLabel}>Nome do Personagem</Text>
         <TextInput
-          placeholder=""
+          placeholder="Type here the name of your character"
           onChangeText={onChangeSearchPersonagens}
           defaultValue={searchText}
           style={styles.searchInput}
         />
       </View>
-      {personagens?.length > 0 && (
+      {data.length > 0 && (
         <Pagination
-          data={personagens}
+          data={data}
           RenderComponent={Table}
           buttonConst={3}
           contentPerPage={contentPerPage}
           siblingCount={1}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
           totalItems={totalItems}
-          fetchSearchResults={fetchSearchResults}
-          searchText={searchText}
-          debouncedSearch={debouncedSearch}
         />
       )}
       <ToastManager />
