@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
-
 import { useNavigation } from "@react-navigation/native";
+
 import InternalLinkButton from "../../components/InternalLinkButton/InternalLinkButton";
 
 const MainScreen = () => {
