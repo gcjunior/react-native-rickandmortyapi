@@ -31,13 +31,13 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: '#d42025',
     color: '#fff',
-    width: 40, // Equal width and height for a circle
+    width: 40,
     height: 40,
-    justifyContent: 'center', // Centers children vertically
-    alignItems: 'center', // Centers children horizontally
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   activePageButton: {
-    backgroundColor: '#d42025', // Active page background color
+    backgroundColor: '#d42025',
     borderColor: '#d42025',
   },
   activePageText: {
@@ -58,6 +58,6 @@ export const styles = StyleSheet.create({
     borderColor: '#d42025',
   },
   disabledButton: {
-    opacity: 0.5, // Visually indicate disabled state
+    opacity: 0.5,
   },
 });

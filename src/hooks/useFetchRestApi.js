@@ -2,10 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Toast } from 'toastify-react-native';
 import { debounce } from 'lodash'; // Import as a named export
 
-const useFetchRestApi = ({
-  searchText,
-  currentPage
-}) => {
+const useFetchRestApi = ({ searchText, currentPage }) => {
   const [fetchResults, setFetchResults] = useState(0);
   const fetchSearchResults = useCallback(
     async (searchTerm, selectedPage) => {
@@ -54,8 +51,6 @@ const useFetchRestApi = ({
   useEffect(() => {
     debouncedSearch(searchText, currentPage);
   }, [searchText, currentPage, debouncedSearch]);
-
-  console.log(fetchResults);
 
   return {
     totalItems: fetchResults?.info?.count ?? 0,

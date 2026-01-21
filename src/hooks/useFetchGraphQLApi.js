@@ -1,0 +1,57 @@
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { gql } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client/react';
+import { useQuery } from '@apollo/client/react';
+import debounce from 'lodash.debounce';
+
+export const useFetchGraphQLApi = ({ searchText, currentPage }) => {
+  const GET_CHARACTERS = gql`
+    query Characters($page: Int, $name: String) {
+      characters(page: $page, filter: { name: $name }) {
+        info {
+          count
+          pages
+        }
+        results {
+          id
+          name
+          species
+          gender
+          image
+        }
+      }
+    }
+  `;
+  // // useQuery requires a unique query key and a query function
+  // const { loading, error, data } = useQuery(GET_CHARACTERS, {
+  //   variables: { name: searchText, page: currentPage }
+  // });
+
+  const [loadSearchResults, { loading, error, data }] =
+    useLazyQuery(GET_CHARACTERS);
+
+  // Debounce the network request
+  const debouncedLoad = useCallback(
+    debounce((searchText, currentPage) => {
+      loadSearchResults({ variables: { name: searchText, page: currentPage } });
+    }, 300),
+    [], // Empty dependency array ensures the debounced function is only created once
+  );
+
+  useEffect(() => {
+    debouncedLoad(searchText, currentPage);
+  }, [searchText, currentPage, debouncedLoad]);
+
+  const fetchData = data?.characters;
+  const pages = fetchData?.info?.pages;
+  const count = fetchData?.info?.count;
+  const fetchResults = fetchData?.results;
+
+  return {
+    isLoading: loading,
+    error,
+    fetchSearchResults: fetchResults,
+    pages,
+    count,
+  };
+};
