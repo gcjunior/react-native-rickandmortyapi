@@ -1,13 +1,12 @@
-import * as React from 'react';
-import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client/react';
-import 'core-js/features/promise'
 import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import 'core-js/features/promise';
 
+import GraphQLApiScreen from './src/screens/GraphQLApiScreen/GraphQLApiScreen';
 import MainScreen from './src/screens/MainScreen/MainScreen';
 import RestApiScreen from './src/screens/RestApiScreen/RestApiScreen';
-import GraphQLApiScreen from './src/screens/GraphQLApiScreen/GraphQLApiScreen'
 
 const RootStack = createNativeStackNavigator({
   screens: {

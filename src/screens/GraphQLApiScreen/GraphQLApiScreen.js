@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
 import ToastManager from 'toastify-react-native';
 
-import { styles } from './styles';
+import Loading from '../../components/Loading/Loading';
 import Pagination from '../../components/Pagination/Pagination';
 import Table from '../../components/Table/Table';
 import { useFetchGraphQLApi } from '../../hooks/useFetchGraphQLApi';
-import Loading from '../../components/Loading/Loading';
+import { styles } from './styles';
 
 const GraphQLApiScreen = () => {
   const [searchText, setSearchText] = useState('');

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import { usePaginationRange } from '../../hooks/usePaginationRange';
-import { styles } from './styles';
 import TriangleLeft from '../TriangleLeft/TriangleLeft';
 import TriangleRight from '../TriangleRight/TriangleRight';
+import { styles } from './styles';
 
 const Pagination = ({
   data,

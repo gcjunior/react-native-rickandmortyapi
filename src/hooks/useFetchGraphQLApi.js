@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { gql } from '@apollo/client';
 import { useLazyQuery } from '@apollo/client/react';
-import { useQuery } from '@apollo/client/react';
 import debounce from 'lodash.debounce';
+import { useCallback, useEffect } from 'react';
 
 export const useFetchGraphQLApi = ({ searchText, currentPage }) => {
   const GET_CHARACTERS = gql`
@@ -22,11 +21,6 @@ export const useFetchGraphQLApi = ({ searchText, currentPage }) => {
       }
     }
   `;
-  // // useQuery requires a unique query key and a query function
-  // const { loading, error, data } = useQuery(GET_CHARACTERS, {
-  //   variables: { name: searchText, page: currentPage }
-  // });
-
   const [loadSearchResults, { loading, error, data }] =
     useLazyQuery(GET_CHARACTERS);
 
