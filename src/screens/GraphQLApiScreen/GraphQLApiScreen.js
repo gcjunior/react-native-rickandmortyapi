@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
-import ToastManager from 'toastify-react-native';
 
 import Loading from '../../components/Loading/Loading';
 import Pagination from '../../components/Pagination/Pagination';
@@ -16,7 +15,7 @@ const GraphQLApiScreen = () => {
   const {
     fetchSearchResults: personagens,
     count: totalItems,
-    isLoading
+    isLoading,
   } = useFetchGraphQLApi({
     searchText,
     currentPage,
@@ -60,7 +59,6 @@ const GraphQLApiScreen = () => {
           totalItems={totalItems}
         />
       )}
-      <ToastManager />
     </View>
   );
 };

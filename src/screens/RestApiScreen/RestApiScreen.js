@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Text, TextInput, View } from 'react-native';
-import ToastManager from 'toastify-react-native';
 
-import { styles } from './styles';
 import Pagination from '../../components/Pagination/Pagination';
 import Table from '../../components/Table/Table';
+import { AuthContext } from '../../context/AuthContextProvider';
 import useFetchRestApi from '../../hooks/useFetchRestApi';
+import { styles } from './styles';
 
 const RestApiScreen = () => {
   const [searchText, setSearchText] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const contentPerPage = 20;
 
+  const { user } = useContext(AuthContext);
+  const { firstName, lastName } = { ...user };
+
   const { data, totalItems } = useFetchRestApi({
     searchText,
-    currentPage
+    currentPage,
   });
 
-  const onChangeSearchPersonagens = (val) => {
+  const onChangeSearchPersonagens = val => {
     setSearchText(val);
     setCurrentPage(1);
   };
@@ -29,7 +32,9 @@ const RestApiScreen = () => {
           <Text style={styles.labelHeader}>
             <Text style={styles.underline}>BUS</Text>CA RICK AND MORTY
           </Text>
-          <Text style={styles.labelCandidato}>NOME DO CANDIDATO</Text>
+          <Text
+            style={styles.labelCandidato}
+          >{`${firstName} ${lastName}`}</Text>
         </View>
       </View>
 
@@ -54,7 +59,6 @@ const RestApiScreen = () => {
           totalItems={totalItems}
         />
       )}
-      <ToastManager />
     </View>
   );
 };
