@@ -27,15 +27,16 @@ export const useFetchGraphQLApi = ({ searchText, currentPage }) => {
   // Debounce the network request
   const debouncedLoad = useCallback(
     debounce((searchText, currentPage) => {
-      const filter = {...(currentPage !== null && { page: currentPage }), ...(searchText?.length > 0 && { name: searchText })}
-      console.log(filter)
+      const filter = {
+        ...(currentPage !== null && { page: currentPage }),
+        ...(searchText?.length > 0 && { name: searchText }),
+      };
       loadSearchResults({ variables: filter });
     }, 300),
     [], // Empty dependency array ensures the debounced function is only created once
   );
 
   useEffect(() => {
-    console.log('currentPage', currentPage)
     debouncedLoad(searchText, currentPage);
   }, [searchText, currentPage, debouncedLoad]);
 

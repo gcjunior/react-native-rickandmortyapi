@@ -1,6 +1,6 @@
 import { FlashList } from '@shopify/flash-list';
 import { useCallback, useRef } from 'react';
-import { ActivityIndicator, Text, View, Button } from 'react-native';
+import { ActivityIndicator, Button, Text, View } from 'react-native';
 import CharacterListItem from '../../components/CharacterListItem/CharacterListItem';
 
 import { useFetchGraphQLApiInfineScroll } from '../../hooks/useFetchGraphQLApiInfineScroll';
@@ -21,10 +21,10 @@ const GraphQLApiInfiniteScrollListingScreen = () => {
   const scrollToTop = () => {
     flashListRef.current?.scrollToIndex({ index: 0, animated: true });
   };
-  
+
   return (
     <View style={styles.mainView}>
-      <View style={styles.container}>
+      <View>
         <View style={styles.row}>
           <Text style={styles.labelHeader}>
             <Text style={styles.underline}>BUS</Text>CA RICK AND MORTY
@@ -32,7 +32,7 @@ const GraphQLApiInfiniteScrollListingScreen = () => {
           <Text style={styles.labelCandidato}>NOME DO CANDIDATO</Text>
         </View>
       </View>
-      <Button onPress={scrollToTop} title={"Scroll to top"} />
+      <Button onPress={scrollToTop} title={'Scroll to top'} />
       <FlashList
         ref={flashListRef}
         data={items}

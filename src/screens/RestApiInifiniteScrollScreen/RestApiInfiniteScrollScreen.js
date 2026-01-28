@@ -1,9 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  useWindowDimensions
-} from 'react-native';
+import { ActivityIndicator, FlatList, useWindowDimensions } from 'react-native';
 
 import CharacterListItem from '../../components/CharacterListItem/CharacterListItem';
 
@@ -38,7 +34,6 @@ const RestApiInfiniteScrollScreen = () => {
       return;
     }
     setItems([]);
-    // setNextPage(initialPage);
     fetchPage(initialPage);
   };
 
@@ -53,8 +48,6 @@ const RestApiInfiniteScrollScreen = () => {
 
   const itemHeight = width + 40;
 
-  // Use case: increase impression count for posts
-  // that are visible on the screen for more than 0.5 seconds
   const viewabilityConfigCallbackPairs = useRef([
     {
       viewabilityConfig: {
@@ -72,7 +65,6 @@ const RestApiInfiniteScrollScreen = () => {
   ]);
 
   if (items.length === 0) {
-    // this is only to make the debug prop on FlatList Work
     return null;
   }
 
@@ -88,7 +80,6 @@ const RestApiInfiniteScrollScreen = () => {
       refreshing={loading}
       onRefresh={onRefresh}
       debug
-      // removeClippedSubviews={true}
       initialNumToRender={3}
       getItemLayout={(data, index) => ({
         length: itemHeight,

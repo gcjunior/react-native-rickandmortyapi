@@ -7,12 +7,13 @@ import ToastManager from 'toastify-react-native';
 
 import AuthContextProvider from './src/context/AuthContextProvider';
 import { useIsSignedIn, useIsSignedOut } from './src/hooks/useIsSignedIn';
+import GraphQLApiInfiniteScrollListingScreen from './src/screens/GraphQLApiInfiniteScrollListingScreen/GraphQLApiInfiniteScrollListingScreen';
 import GraphQLApiScreen from './src/screens/GraphQLApiScreen/GraphQLApiScreen';
 import MainScreen from './src/screens/MainScreen/MainScreen';
+import RestApiInfiniteScrollScreen from './src/screens/RestApiInifiniteScrollScreen/RestApiInfiniteScrollScreen';
 import RestApiScreen from './src/screens/RestApiScreen/RestApiScreen';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
-import GraphQLApiInfiniteScrollListingScreen from './src/screens/GraphQLApiInfiniteScrollListingScreen/GraphQLApiInfiniteScrollListingScreen'
-import RestApiInfiniteScrollScreen from './src/screens/RestApiInifiniteScrollScreen/RestApiInfiniteScrollScreen'
+import PersonagemDetailsScreen from './src/screens/PersonagemDetailsScreen/PersonagemDetailsScreen'
 
 const RootStack = createNativeStackNavigator({
   screens: {
@@ -40,11 +41,15 @@ const RootStack = createNativeStackNavigator({
     },
     GraphQLApiInfiniteScrollListingScreen: {
       if: useIsSignedIn,
-      screen: GraphQLApiInfiniteScrollListingScreen
+      screen: GraphQLApiInfiniteScrollListingScreen,
     },
     RestApiInfiniteScrollScreen: {
       if: useIsSignedIn,
-      screen: RestApiInfiniteScrollScreen
+      screen: RestApiInfiniteScrollScreen,
+    },
+    PersonagemDetailsScreen: {
+      if: useIsSignedIn,
+      screen: PersonagemDetailsScreen
     }
   },
 });
