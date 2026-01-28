@@ -24,12 +24,12 @@ const MainScreen = () => {
       <InternalLinkButton
         navigation={navigation}
         screenName="GraphQLApiInfiniteScrollListingScreen"
-        title="Load Rick and Morty using GraphQL API and Infinite Scroll"
+        title="Load Rick and Morty using GraphQL API, Infinite Scroll and FlashList component"
       />
       <InternalLinkButton
         navigation={navigation}
         screenName="RestApiInfiniteScrollScreen"
-        title="Load Rick and Morty using Rest API and Infinite Scroll"
+        title="Load Rick and Morty using Rest API, Infinite Scroll and FlatList component"
       />
       <Button onPress={signOut} title='Sign Out' />
     </View>

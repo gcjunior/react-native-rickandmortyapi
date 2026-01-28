@@ -27,7 +27,7 @@ const Table = ({
 }) => {
   const navigation = useNavigation();
   const handleOpenPersonamDetailPage = (personagemId) => {
-    navigation.navigate('PersonagemDetailsScreen', { personagemId });
+    navigation.navigate('PersonagemDetailsScreen', { personagemId: 2 });
   };
 
   return (
