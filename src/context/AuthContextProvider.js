@@ -6,7 +6,7 @@ export const AuthContext = createContext({});
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const accessToken = useMemo(() => user?.accessToken, [user])
+  const accessToken = useMemo(() => user?.accessToken, [user]);
 
   const validate = ({ login, password, setErrors }) => {
     let valid = true;
@@ -71,11 +71,13 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   const returnToken = () => {
-    return accessToken
+    return accessToken;
   };
 
   return (
-    <AuthContext.Provider value={{ user, accessToken, signIn, signOut, returnToken }}>
+    <AuthContext.Provider
+      value={{ user, accessToken, signIn, signOut, returnToken }}
+    >
       {children}
     </AuthContext.Provider>
   );

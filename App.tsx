@@ -11,6 +11,8 @@ import GraphQLApiScreen from './src/screens/GraphQLApiScreen/GraphQLApiScreen';
 import MainScreen from './src/screens/MainScreen/MainScreen';
 import RestApiScreen from './src/screens/RestApiScreen/RestApiScreen';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
+import GraphQLApiInfiniteScrollListingScreen from './src/screens/GraphQLApiInfiniteScrollListingScreen/GraphQLApiInfiniteScrollListingScreen'
+import RestApiInfiniteScrollScreen from './src/screens/RestApiInifiniteScrollScreen/RestApiInfiniteScrollScreen'
 
 const RootStack = createNativeStackNavigator({
   screens: {
@@ -36,6 +38,14 @@ const RootStack = createNativeStackNavigator({
       screen: GraphQLApiScreen,
       options: { title: 'Rick and Morty - GraphQL API Call' },
     },
+    GraphQLApiInfiniteScrollListingScreen: {
+      if: useIsSignedIn,
+      screen: GraphQLApiInfiniteScrollListingScreen
+    },
+    RestApiInfiniteScrollScreen: {
+      if: useIsSignedIn,
+      screen: RestApiInfiniteScrollScreen
+    }
   },
 });
 
