@@ -1,10 +1,12 @@
 import React from 'react';
+import Moment from 'moment';
 
 import { StyleSheet, Text, View } from 'react-native';
 import { useGetQuery } from '../../hooks/useGetQuery';
 import Loading from './../../components/Loading/Loading';
 import { GET_CHARACTER, GET_CHARACTER_NAME } from './constants';
 import Header from '../../components/Header/Header';
+import moment from 'moment';
 
 const DataRecord = ({ label, value }) => (
   <View style={styles.card}>
@@ -30,6 +32,9 @@ const PersonagemDetailsScreen = ({ navigation, route }) => {
         <DataRecord label="Name" value={item.name} />
         <DataRecord label="Species" value={item.species} />
         <DataRecord label="Status" value={item.status} />
+        <DataRecord label="Type" value={item.type} />
+        <DataRecord label="Gender" value={item.gender} />
+        <DataRecord label="Created" value={moment(item.created).format('DD/MM/YYYY')} />
       </View>
     </View>
   );

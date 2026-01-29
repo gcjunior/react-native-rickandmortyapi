@@ -8,6 +8,9 @@ export const GET_CHARACTER = gql`
       name
       species
       status
+      type
+      gender
+      created
     }
   }
 `;
