@@ -71,8 +71,8 @@ const RestApiInfiniteScrollScreen = () => {
     <FlatList
       data={items}
       renderItem={renderItem}
-      contentContainerStyle={{ gap: 10 }}
-      columnWrapperStyle={{ gap: 5 }}
+      contentContainerStyle={{ gap: 0 }}
+      // columnWrapperStyle={{ gap: 5 }}
       onEndReached={() => fetchPage(nextPage)}
       onEndReachedThreshold={5}
       ListFooterComponent={() => loading && <ActivityIndicator />}
@@ -86,7 +86,7 @@ const RestApiInfiniteScrollScreen = () => {
         index,
       })}
       viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
-      numColumns={2}
+      // numColumns={2} // if numColumns is defined than you need columnWrapperStyle gap: ...
     />
   );
 };

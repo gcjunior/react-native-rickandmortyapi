@@ -6,8 +6,10 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   mainView: {
-    // padding: 20,
     flex: 1,
+  },
+  container: {
+    padding: 20,
   },
   labelHeader: {
     fontSize: 22,

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useGetQuery } from '../../hooks/useGetQuery';
 import Loading from './../../components/Loading/Loading';
 import { GET_CHARACTER, GET_CHARACTER_NAME } from './constants';
+import Header from '../../components/Header/Header';
 
 const DataRecord = ({ label, value }) => (
   <View style={styles.card}>
@@ -23,8 +24,9 @@ const PersonagemDetailsScreen = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
+      <Header />
       {loading && <Loading />}
-      <View style={styles.container}>
+      <View styles={styles.row}>
         <DataRecord label="Name" value={item.name} />
         <DataRecord label="Species" value={item.species} />
         <DataRecord label="Status" value={item.status} />
@@ -38,6 +40,10 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#f5f5f5',
     flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   card: {
     flexDirection: 'row', // Aligns label and value horizontally [2]
