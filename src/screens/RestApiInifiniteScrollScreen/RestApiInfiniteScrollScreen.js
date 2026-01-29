@@ -17,7 +17,6 @@ const RestApiInfiniteScrollScreen = () => {
       return;
     }
 
-    console.log('Fetching: ', url);
     setLoading(true);
     const response = await fetch(url);
     const responseJson = await response.json();

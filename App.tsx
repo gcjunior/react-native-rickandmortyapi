@@ -13,7 +13,7 @@ import MainScreen from './src/screens/MainScreen/MainScreen';
 import RestApiInfiniteScrollScreen from './src/screens/RestApiInifiniteScrollScreen/RestApiInfiniteScrollScreen';
 import RestApiScreen from './src/screens/RestApiScreen/RestApiScreen';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
-import PersonagemDetailsScreen from './src/screens/PersonagemDetailsScreen/PersonagemDetailsScreen'
+import PersonagemDetailsScreen from './src/screens/PersonagemDetailsScreen/PersonagemDetailsScreen';
 
 const RootStack = createNativeStackNavigator({
   screens: {
@@ -49,8 +49,9 @@ const RootStack = createNativeStackNavigator({
     },
     PersonagemDetailsScreen: {
       if: useIsSignedIn,
-      screen: PersonagemDetailsScreen
-    }
+      screen: PersonagemDetailsScreen,
+      options: { title: 'Character Details' },
+    },
   },
 });
 
