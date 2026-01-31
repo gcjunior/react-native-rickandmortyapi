@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Toast } from 'toastify-react-native';
+import Config from "react-native-config";
 import { debounce } from 'lodash'; // Import as a named export
 
 const useFetchRestApi = ({ searchText, currentPage }) => {
@@ -10,7 +11,7 @@ const useFetchRestApi = ({ searchText, currentPage }) => {
       query += `page=${selectedPage}`;
       try {
         const response = await fetch(
-          `https://rickandmortyapi.com/api/character/${query}`,
+          `${Config.API_URL}/api/character/${query}`,
         );
         if (!response.ok) {
           throw response;

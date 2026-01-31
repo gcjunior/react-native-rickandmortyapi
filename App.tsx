@@ -3,6 +3,7 @@ import { ApolloProvider } from '@apollo/client/react';
 import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import 'core-js/features/promise';
+import Config from 'react-native-config';
 import ToastManager from 'toastify-react-native';
 
 import AuthContextProvider from './src/context/AuthContextProvider';
@@ -10,10 +11,10 @@ import { useIsSignedIn, useIsSignedOut } from './src/hooks/useIsSignedIn';
 import GraphQLApiInfiniteScrollListingScreen from './src/screens/GraphQLApiInfiniteScrollListingScreen/GraphQLApiInfiniteScrollListingScreen';
 import GraphQLApiScreen from './src/screens/GraphQLApiScreen/GraphQLApiScreen';
 import MainScreen from './src/screens/MainScreen/MainScreen';
+import PersonagemDetailsScreen from './src/screens/PersonagemDetailsScreen/PersonagemDetailsScreen';
 import RestApiInfiniteScrollScreen from './src/screens/RestApiInifiniteScrollScreen/RestApiInfiniteScrollScreen';
 import RestApiScreen from './src/screens/RestApiScreen/RestApiScreen';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
-import PersonagemDetailsScreen from './src/screens/PersonagemDetailsScreen/PersonagemDetailsScreen';
 
 const RootStack = createNativeStackNavigator({
   screens: {
@@ -58,7 +59,7 @@ const RootStack = createNativeStackNavigator({
 const Navigation = createStaticNavigation(RootStack);
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'https://rickandmortyapi.com/graphql' }), // Replace with your GraphQL server endpoint
+  link: new HttpLink({ uri: `${Config.API_URL}/graphql` }), // Replace with your GraphQL server endpoint
   cache: new InMemoryCache(),
 });
 

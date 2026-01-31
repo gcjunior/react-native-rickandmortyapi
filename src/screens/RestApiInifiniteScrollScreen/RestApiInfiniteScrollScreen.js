@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, FlatList, useWindowDimensions } from 'react-native';
+import Config from "react-native-config";
 
 import CharacterListItem from '../../components/CharacterListItem/CharacterListItem';
 
-const initialPage = 'https://rickandmortyapi.com/api/character';
+const initialPage = `${Config.API_URL}/api/character`;
 
 const RestApiInfiniteScrollScreen = () => {
   const [loading, setLoading] = useState(false);
